@@ -301,3 +301,5 @@ C:\Users\Kostic\Desktop\Raf\USI\Ispit\USI-Projekat\MarkoKosticIT6922\obj\Debug\n
 C:\Users\Kostic\Desktop\Raf\USI\Ispit\USI-Projekat\MarkoKosticIT6922\obj\Debug\net9.0\MarkoKosticIT6922.pdb
 C:\Users\Kostic\Desktop\Raf\USI\Ispit\USI-Projekat\MarkoKosticIT6922\obj\Debug\net9.0\MarkoKosticIT6922.genruntimeconfig.cache
 C:\Users\Kostic\Desktop\Raf\USI\Ispit\USI-Projekat\MarkoKosticIT6922\obj\Debug\net9.0\ref\MarkoKosticIT6922.dll
+C:\Users\Kostic\Desktop\Raf\USI\Ispit\USI-Projekat\MarkoKosticIT6922\bin\Debug\net9.0\System.Formats.Asn1.dll
+C:\Users\Kostic\Desktop\Raf\USI\Ispit\USI-Projekat\MarkoKosticIT6922\bin\Debug\net9.0\System.Text.Json.dll

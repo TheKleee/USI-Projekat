@@ -9,7 +9,7 @@
         public int ZadatakId { get; set; }
         public Zadatak? Zadatak { get; set; }
 
-        public int KorisnikId { get; set; }
+        public string KorisnikId { get; set; } = String.Empty;
         public Korisnik? Korisnik { get; set; }
 
         public bool Odobreno { get; set; } = false;

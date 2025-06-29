@@ -21,33 +21,18 @@ namespace MarkoKosticIT6922.Data
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<Igra>()
-                .Property(i => i.Naziv)
-                .IsRequired()
-                .HasMaxLength(60);
-            
-            modelBuilder.Entity<Uloga>()
-                .Property(u => u.Naziv)
-                .IsRequired()
-                .HasMaxLength(20);
-
-            modelBuilder.Entity<Korisnik>()
-                .Property(k => k.Ime)
-                .IsRequired()
-                .HasMaxLength(60);
-
-            modelBuilder.Entity<Zadatak>()
-                .Property(z => z.Naziv)
-                .IsRequired()
-                .HasMaxLength(60);
-
-            modelBuilder.Entity<Resenje>()
-                .Property(r => r.Opis)
-                .IsRequired();
+            modelBuilder.Entity<Greska>()
+                .HasOne(g => g.Korisnik)
+                .WithMany()
+                .HasForeignKey(g => g.KorisnikId)
+                .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<Greska>()
-                .Property(g => g.Opis)
-                .IsRequired();
+                .HasOne(g => g.Resenje)
+                .WithMany(r => r.Greske)
+                .HasForeignKey(g => g.ResenjeId)
+                .OnDelete(DeleteBehavior.Restrict);
+
         }
     }
 }

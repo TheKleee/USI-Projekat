@@ -1,4 +1,5 @@
-﻿using MarkoKosticIT6922.Models;
+﻿using MarkoKosticIT6922.Constants;
+using MarkoKosticIT6922.Models;
 using Microsoft.AspNetCore.Identity;
 
 namespace MarkoKosticIT6922.Data
@@ -9,8 +10,8 @@ namespace MarkoKosticIT6922.Data
         {
             if (roleManager != null && userManager != null)
             {
-                if (!await roleManager.RoleExistsAsync("Admin"))
-                    await roleManager.CreateAsync(new IdentityRole("Admin"));
+                await roleManager.CreateAsync(new IdentityRole(Roles.User.ToString()));
+                await roleManager.CreateAsync(new IdentityRole(Roles.Admin.ToString()));
 
                 if (await userManager.FindByEmailAsync("admin@raf.rs") == null)
                 {
@@ -24,7 +25,7 @@ namespace MarkoKosticIT6922.Data
                         Admin = true
                     };
                     await userManager.CreateAsync(user, "Admin123$");
-                    await userManager.AddToRoleAsync(user, "Admin");
+                    await userManager.AddToRoleAsync(user, Roles.Admin.ToString());
                 }
             }
         }
