@@ -23,7 +23,7 @@ namespace MarkoKosticIT6922.Data
 
             modelBuilder.Entity<Greska>()
                 .HasOne(g => g.Korisnik)
-                .WithMany()
+                .WithMany(k => k.Greske)
                 .HasForeignKey(g => g.KorisnikId)
                 .OnDelete(DeleteBehavior.Restrict);
 
@@ -33,6 +33,11 @@ namespace MarkoKosticIT6922.Data
                 .HasForeignKey(g => g.ResenjeId)
                 .OnDelete(DeleteBehavior.Restrict);
 
+            modelBuilder.Entity<Resenje>()
+                .HasOne(r => r.Korisnik)
+                .WithMany(k => k.Resenja)
+                .HasForeignKey(r => r.KorisnikId)
+                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }
