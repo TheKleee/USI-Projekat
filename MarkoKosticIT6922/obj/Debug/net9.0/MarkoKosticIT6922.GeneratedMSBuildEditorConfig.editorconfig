@@ -32,12 +32,72 @@ build_property.EnableCodeStyleSeverity =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Kostic/Desktop/Raf/USI/Ispit/USI-Projekat/MarkoKosticIT6922/Views/Greskas/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR3Jlc2thc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Kostic/Desktop/Raf/USI/Ispit/USI-Projekat/MarkoKosticIT6922/Views/Greskas/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR3Jlc2thc1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Kostic/Desktop/Raf/USI/Ispit/USI-Projekat/MarkoKosticIT6922/Views/Greskas/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR3Jlc2thc1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Kostic/Desktop/Raf/USI/Ispit/USI-Projekat/MarkoKosticIT6922/Views/Greskas/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR3Jlc2thc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Kostic/Desktop/Raf/USI/Ispit/USI-Projekat/MarkoKosticIT6922/Views/Greskas/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR3Jlc2thc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Kostic/Desktop/Raf/USI/Ispit/USI-Projekat/MarkoKosticIT6922/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Kostic/Desktop/Raf/USI/Ispit/USI-Projekat/MarkoKosticIT6922/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Kostic/Desktop/Raf/USI/Ispit/USI-Projekat/MarkoKosticIT6922/Views/Igras/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSWdyYXNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Kostic/Desktop/Raf/USI/Ispit/USI-Projekat/MarkoKosticIT6922/Views/Igras/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSWdyYXNcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Kostic/Desktop/Raf/USI/Ispit/USI-Projekat/MarkoKosticIT6922/Views/Igras/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSWdyYXNcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Kostic/Desktop/Raf/USI/Ispit/USI-Projekat/MarkoKosticIT6922/Views/Igras/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSWdyYXNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Kostic/Desktop/Raf/USI/Ispit/USI-Projekat/MarkoKosticIT6922/Views/Igras/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSWdyYXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Kostic/Desktop/Raf/USI/Ispit/USI-Projekat/MarkoKosticIT6922/Views/Resenjes/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVzZW5qZXNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Kostic/Desktop/Raf/USI/Ispit/USI-Projekat/MarkoKosticIT6922/Views/Resenjes/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVzZW5qZXNcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Kostic/Desktop/Raf/USI/Ispit/USI-Projekat/MarkoKosticIT6922/Views/Resenjes/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVzZW5qZXNcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Kostic/Desktop/Raf/USI/Ispit/USI-Projekat/MarkoKosticIT6922/Views/Resenjes/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVzZW5qZXNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Kostic/Desktop/Raf/USI/Ispit/USI-Projekat/MarkoKosticIT6922/Views/Resenjes/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVzZW5qZXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Kostic/Desktop/Raf/USI/Ispit/USI-Projekat/MarkoKosticIT6922/Views/Shared/Error.cshtml]
@@ -50,6 +110,46 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/Kostic/Desktop/Raf/USI/Ispit/USI-Projekat/MarkoKosticIT6922/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Kostic/Desktop/Raf/USI/Ispit/USI-Projekat/MarkoKosticIT6922/Views/Ulogas/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVWxvZ2FzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Kostic/Desktop/Raf/USI/Ispit/USI-Projekat/MarkoKosticIT6922/Views/Ulogas/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVWxvZ2FzXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Kostic/Desktop/Raf/USI/Ispit/USI-Projekat/MarkoKosticIT6922/Views/Ulogas/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVWxvZ2FzXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Kostic/Desktop/Raf/USI/Ispit/USI-Projekat/MarkoKosticIT6922/Views/Ulogas/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVWxvZ2FzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Kostic/Desktop/Raf/USI/Ispit/USI-Projekat/MarkoKosticIT6922/Views/Ulogas/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVWxvZ2FzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Kostic/Desktop/Raf/USI/Ispit/USI-Projekat/MarkoKosticIT6922/Views/Zadataks/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcWmFkYXRha3NcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Kostic/Desktop/Raf/USI/Ispit/USI-Projekat/MarkoKosticIT6922/Views/Zadataks/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcWmFkYXRha3NcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Kostic/Desktop/Raf/USI/Ispit/USI-Projekat/MarkoKosticIT6922/Views/Zadataks/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcWmFkYXRha3NcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Kostic/Desktop/Raf/USI/Ispit/USI-Projekat/MarkoKosticIT6922/Views/Zadataks/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcWmFkYXRha3NcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Kostic/Desktop/Raf/USI/Ispit/USI-Projekat/MarkoKosticIT6922/Views/Zadataks/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcWmFkYXRha3NcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Kostic/Desktop/Raf/USI/Ispit/USI-Projekat/MarkoKosticIT6922/Views/_ViewImports.cshtml]
