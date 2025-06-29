@@ -1,0 +1,60 @@
+﻿@using Microsoft.AspNetCore.Identity
+@model MarkoKosticIT6922.Models.Zadatak
+@inject UserManager<Korisnik> UserManager
+@{
+	ViewData["Title"] = "Igra";
+}
+
+@{
+	var korisnik = await UserManager.GetUserAsync(User);
+}
+
+<h2>Zadatak: @Model.Naziv</h2>
+
+<p>@Model.Opis</p>
+
+<div class="d-flex justify-content-start">
+	<a asp-action="Zadaci" asp-route-id="@Model.IgraId" class="btn btn-primary">Nazad</a>
+</div>
+
+@if ((korisnik != null && (korisnik.UlogaId == 1 || korisnik.UlogaId == 2)) || User.IsInRole("Admin"))
+{
+	<div class="d-flex justify-content-end">
+		<a asp-controller="Resenjes" asp-action="Create" class="btn btn-success">Dodaj novo resenje</a>
+	</div>
+}
+
+<table class="table tabletable-striped">
+	<thead>
+		<tr>
+			<th>Opis</th>
+			<th> </th>
+			<th>Opcije</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var resenje in Model.Resenja)
+		{
+			<tr>
+				<td>@resenje.Opis</td>
+				<td> </td>
+				<td>
+					@if(resenje.Greske.Count > 0)
+					{
+						<p><strong>Pronadjena je greska u resenju</strong></p>
+					} else {
+						@if ((korisnik != null && (korisnik.UlogaId == 1 || korisnik.UlogaId == 2)) || User.IsInRole("Admin"))
+						{
+							<a class="btn btn-primary" asp-controller="Resenjas" asp-action="Edit" asp-route-id="@resenje.ResenjeId">Izmeni</a>
+							<a class="btn btn-danger" asp-controller="Resenjas" asp-action="Delete" asp-route-id="@resenje.ResenjeId">Obrisi</a>
+						} 
+						@if (User.IsInRole("Admin") || (korisnik != null && (korisnik.UlogaId == 3)))
+						{
+							<a class="btn btn-success" asp-action="Test" asp-route-id="@resenje.ResenjeId">Testiraj</a>
+						}
+					}
+				</td>
+			</tr>
+		}
+	</tbody>
+</table>

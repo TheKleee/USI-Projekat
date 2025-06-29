@@ -1,0 +1,22 @@
+﻿@model MarkoKosticIT6922.Models.Resenje
+@{
+	ViewData["Title"] = "Test";
+}
+
+    
+
+<div class="d-flex justify-content-start">
+</div>
+
+<div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 50vh;">
+    <h2 class="mb-4">@Model.Opis</h2>
+
+    <a class="btn btn-success mb-3 align-items-center justify-content-center" style="width: 200px; height: 50px; font-size: 16px; font-weight: bold;"
+       asp-action="Odobri" asp-route-id="@Model.ZadatakId">Odobri</a>
+
+    <a class="btn btn-danger mb-3 align-items-center justify-content-center" style="width: 200px; height: 50px; font-size: 16px; font-weight: bold;"
+       asp-action="Greska" asp-route-id="@Model.ResenjeId">Greska</a>
+
+    <a class="btn btn-primary mb-3 align-items-center justify-content-center" style="width: 200px; height: 50px; font-size: 16px; font-weight: bold;"
+       asp-action="Resenja" asp-route-id="@Model.ZadatakId">Nazad</a>
+</div>

@@ -1,0 +1,40 @@
+﻿@model IEnumerable<MarkoKosticIT6922.Models.Igra>
+@{
+	ViewData["Title"] = "Lista Igara";
+}
+
+<h2>Sve igre</h2>
+
+@if (User.IsInRole("Admin"))
+{
+	<div class="d-flex justify-content-end">
+		<a asp-controller="Igras" asp-action="Create" class="btn btn-success">Dodaj novu igru</a>
+	</div>
+}
+
+<table id="strankeTabela" class="table tabletable-striped">
+	<thead>
+		<tr>
+			<th>Naziv</th>
+			<th>Opis</th>
+			<th>Opcije</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var igra in Model)
+		{
+				<tr>
+					<td>@igra.Naziv</td>
+					<td>@igra.Opis</td>
+					<td>
+					@if (User.IsInRole("Admin"))
+					{
+						<a class="btn btn-primary" asp-controller="Igras" asp-action="Edit" asp-route-id="@igra.IgraId">Izmeni</a>
+						<a class="btn btn-danger" asp-controller="Igras" asp-action="Delete" asp-route-id="@igra.IgraId">Obrisi</a>
+					} 
+						<a class="btn btn-success" asp-action="Zadaci" asp-route-id="@igra.IgraId">Detalji</a>
+					</td>
+				</tr>
+		}
+	</tbody>
+</table>

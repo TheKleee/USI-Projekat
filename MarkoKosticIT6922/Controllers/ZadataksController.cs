@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace MarkoKosticIT6922.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class ZadataksController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -21,7 +22,6 @@ namespace MarkoKosticIT6922.Controllers
         }
 
         // GET: Zadataks
-        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Index()
         {
             var applicationDbContext = _context.Zadaci.Include(z => z.Igra).Include(z => z.Uloga);

@@ -1,0 +1,52 @@
+﻿@model MarkoKosticIT6922.Models.Igra
+@{
+	ViewData["Title"] = "Igra";
+}
+
+<h2>Igra: @Model.Naziv</h2>
+
+<p>@Model.Opis</p>
+
+<div class="d-flex justify-content-start">
+	<a asp-action="Index" class="btn btn-primary">Nazad</a>
+</div>
+
+@if (User.IsInRole("Admin"))
+{
+		<div class="d-flex justify-content-end">
+			<a asp-controller="Zadataks" asp-action="Create" class="btn btn-success">Dodaj novi zadatak</a>
+		</div>
+}
+
+<table class="table tabletable-striped">
+	<thead>
+		<tr>
+			<th>Naziv</th>
+			<th>Opis</th>
+			<th>Opcije</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var zadatak in Model.Zadaci)
+		{
+			<tr>
+				<td>@zadatak.Naziv</td>
+				<td>@zadatak.Opis</td>
+				<td>
+
+					@if (zadatak.Reseno == true)
+					{
+								<p><strong>Reseno</strong></p>
+					} else {
+						@if (User.IsInRole("Admin"))
+						{
+							<a class="btn btn-primary" asp-controller="Zadataks" asp-action="Edit" asp-route-id="@zadatak.ZadatakId">Izmeni</a>
+							<a class="btn btn-danger" asp-controller="Zadataks" asp-action="Delete" asp-route-id="@zadatak.ZadatakId">Obrisi</a>
+						} 
+							<a class="btn btn-success" asp-action="Resenja" asp-route-id="@zadatak.ZadatakId">Detalji</a>
+					}
+				</td>
+			</tr>
+		}
+	</tbody>
+</table>
