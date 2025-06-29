@@ -15,7 +15,7 @@ namespace MarkoKosticIT6922.Models
 
         public bool? Admin { get; set; } = false;
 
-        public ICollection<Resenje> Resenja { get; set; }
-        public ICollection<Greska> Greske { get; set; }
+        public ICollection<Resenje> Resenja { get; set; } = new List<Resenje>();
+        public ICollection<Greska> Greske { get; set; } = new List<Greska>();
     }
 }

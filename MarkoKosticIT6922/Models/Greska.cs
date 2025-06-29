@@ -7,9 +7,9 @@
         required public string Opis { get; set; }
 
         public int KorisnikId { get; set; }
-        public Korisnik Korisnik { get; set; } = null!;
+        public Korisnik? Korisnik { get; set; }
 
         public int ResenjeId { get; set; }
-        public Resenje Resenje { get; set; } = null!;
+        public Resenje? Resenje { get; set; }
     }
 }
