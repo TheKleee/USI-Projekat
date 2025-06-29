@@ -12,9 +12,9 @@ namespace MarkoKosticIT6922.Data
             var roleManager = service.GetService<RoleManager<IdentityRole>>();
             var context = service.GetRequiredService<ApplicationDbContext>();
 
-            await AdminUserSeeder.SeedAsync(userManager, roleManager);
             await IgreSeeder.SeedAsync(context);
             await UlogeSeeder.SeedAsync(context);
+            await AdminUserSeeder.SeedAsync(userManager, roleManager);
             await ZadaciSeeder.SeedAsync(context);
         }
     }

@@ -6,7 +6,7 @@ namespace MarkoKosticIT6922.Models
     public class Korisnik : IdentityUser
     {
         [MaxLength(60)]
-        public string? Ime { get; set; }
+        required public string Ime { get; set; }
 
         public int UlogaId { get; set; }
         public Uloga? Uloga { get; set; }

@@ -18,6 +18,7 @@ namespace MarkoKosticIT6922.Data
                     var user = new Korisnik
                     {
                         Ime = "Admin",
+                        UlogaId = 1,
                         UserName = "admin@raf.rs",
                         Email = "admin@raf.rs",
                         EmailConfirmed = true,
