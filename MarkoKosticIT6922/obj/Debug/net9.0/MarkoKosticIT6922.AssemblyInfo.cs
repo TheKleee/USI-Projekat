@@ -16,7 +16,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MarkoKosticIT6922")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+eacd45322c48b0ca4ed8d87e2095fb1d41cd6e34")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e3a2766ebf3b498e3f6c3c98811281e9ed0af184")]
 [assembly: System.Reflection.AssemblyProductAttribute("MarkoKosticIT6922")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MarkoKosticIT6922")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
