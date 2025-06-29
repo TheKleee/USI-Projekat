@@ -21,13 +21,13 @@ namespace MarkoKosticIT6922.Data
                         new Zadatak { Naziv = "Prepreke prirode",
                             Opis = "Dostaviti prirodne prepreke ali ostaviti prostranstvo otvorenim.",
                             IgraId = igra1.IgraId, UlogaId = dizajner.UlogaId },
-                        new Zadatak { Naziv = "Prepreke prirode",
+                        new Zadatak { Naziv = "Indikatori ciljeva",
                             Opis = "Napraviti jasne indikatore ciljeva u toku partije.",
                             UlogaId = dizajner.UlogaId, IgraId = igra1.IgraId },
-                        new Zadatak { Naziv = "Prepreke prirode",
+                        new Zadatak { Naziv = "Cepanje papira",
                             Opis = "Napraviti cepanje papira kada se previse zvrlja po njemu.",
                             UlogaId = programer.UlogaId, IgraId = igra2.IgraId },
-                        new Zadatak { Naziv = "Prepreke prirode",
+                        new Zadatak { Naziv = "Okretanje papira",
                             Opis = "Dizajnirati scenu kako okretanje papira ne bi uticalo na utisak.",
                             UlogaId = dizajner.UlogaId, IgraId = igra2.IgraId }
                     );

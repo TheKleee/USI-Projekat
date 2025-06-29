@@ -1,0 +1,27 @@
+﻿@{
+	ViewData["Title"] = "Admin Panel";
+}
+
+
+<div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 50vh;">
+    <h2 class="mb-4"><strong>Admin Panel</strong></h2>
+    <h3 class="mb-5">Upravljaj podacima:</h3>
+
+    <a class="btn btn-primary mb-3 align-items-center justify-content-center" style="width: 200px; height: 50px; font-size: 16px; font-weight: bold;"
+       asp-controller="Igras" asp-action="Index">Igre</a>
+
+    <a class="btn btn-primary mb-3 align-items-center justify-content-center" style="width: 200px; height: 50px; font-size: 16px; font-weight: bold;"
+       asp-controller="Zadataks" asp-action="Index">Zadaci</a>
+
+    <a class="btn btn-primary mb-3 align-items-center justify-content-center" style="width: 200px; height: 50px; font-size: 16px; font-weight: bold;"
+       asp-controller="Resenjes" asp-action="Index">Resenja</a>
+
+    <a class="btn btn-danger mb-3 align-items-center justify-content-center" style="width: 200px; height: 50px; font-size: 16px; font-weight: bold;"
+       asp-controller="Greskas" asp-action="Index">Greske</a>
+
+    <a class="btn btn-success mb-3 align-items-center justify-content-center" style="width: 200px; height: 50px; font-size: 16px; font-weight: bold;"
+       asp-controller="" asp-action="">Korisnici</a>
+
+    <a class="btn btn-success mb-3 align-items-center justify-content-center" style="width: 200px; height: 50px; font-size: 16px; font-weight: bold;"
+       asp-controller="Ulogas" asp-action="Index">Uloge</a>
+</div>

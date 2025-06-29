@@ -59,6 +59,8 @@ namespace MarkoKosticIT6922.Areas.Identity.Pages.Account.Manage
             [Phone]
             [Display(Name = "Phone number")]
             public string PhoneNumber { get; set; }
+
+            public string? Ime { get; set; }
         }
 
         private async Task LoadAsync(Korisnik user)
@@ -70,7 +72,8 @@ namespace MarkoKosticIT6922.Areas.Identity.Pages.Account.Manage
 
             Input = new InputModel
             {
-                PhoneNumber = phoneNumber
+                PhoneNumber = phoneNumber,
+                Ime = user.Ime
             };
         }
 

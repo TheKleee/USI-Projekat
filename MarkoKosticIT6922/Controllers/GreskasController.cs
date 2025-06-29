@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MarkoKosticIT6922.Data;
 using MarkoKosticIT6922.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace MarkoKosticIT6922.Controllers
 {
@@ -20,6 +21,7 @@ namespace MarkoKosticIT6922.Controllers
         }
 
         // GET: Greskas
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Index()
         {
             var applicationDbContext = _context.Greske.Include(g => g.Korisnik).Include(g => g.Resenje);
