@@ -1,7 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
 
 namespace MarkoKosticIT6922.Models
 {
+    [Index(nameof(Naziv), IsUnique = true)]
     public class Igra
     {
         public int IgraId { get; set; }
