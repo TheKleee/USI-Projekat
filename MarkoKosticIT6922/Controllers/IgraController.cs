@@ -1,6 +1,7 @@
 ﻿using MarkoKosticIT6922.Data;
 using MarkoKosticIT6922.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -10,10 +11,12 @@ namespace MarkoKosticIT6922.Controllers
     public class IgraController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly UserManager<Korisnik> _userManager;
 
-        public IgraController(ApplicationDbContext context)
+        public IgraController(ApplicationDbContext context, UserManager<Korisnik> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         public async Task<IActionResult> Index()
@@ -37,6 +40,7 @@ namespace MarkoKosticIT6922.Controllers
         {
             var resenja = await _context.Zadaci
                     .Include(z => z.Resenja)
+                    .ThenInclude(r => r.Greske)
                     .FirstOrDefaultAsync(z => z.ZadatakId == id);
 
             if (resenja == null) return NotFound();
@@ -70,14 +74,16 @@ namespace MarkoKosticIT6922.Controllers
         [HttpGet]
         public async Task<IActionResult> Greska(int id)
         {
-            var resenje = await _context.Resenja
-                .FirstOrDefaultAsync(z => z.ResenjeId == id);
+            var korisnik = await _userManager.GetUserAsync(User);
+            if (korisnik == null) return NotFound();
 
+            var resenje = await _context.Resenja.FirstOrDefaultAsync(z => z.ResenjeId == id);
             if (resenje == null) return NotFound();
 
             var greska = new Greska
             {
                 Opis = "",
+                KorisnikId = korisnik.Id,
                 ResenjeId = id,
                 Resenje = resenje
             };
@@ -104,11 +110,15 @@ namespace MarkoKosticIT6922.Controllers
 
                 greska.KorisnikId = korisnikId;
 
+                var resenje = await _context.Resenja.FirstOrDefaultAsync(r => r.ResenjeId == greska.ResenjeId);
+                if (resenje == null) return NotFound();
+            
+                int zadatakId = resenje.ZadatakId;
 
                 _context.Greske.Add(greska);
                 await _context.SaveChangesAsync();
 
-                return RedirectToAction("Resenja", new { id = greska.Resenje?.ZadatakId });
+                return RedirectToAction("Resenja", new { id = zadatakId });
             }
     }
 }
