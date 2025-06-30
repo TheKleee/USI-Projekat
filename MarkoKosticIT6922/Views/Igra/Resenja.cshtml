@@ -20,7 +20,7 @@
 @if ((korisnik != null && (korisnik.UlogaId == 1 || korisnik.UlogaId == 2)) || User.IsInRole("Admin"))
 {
 	<div class="d-flex justify-content-end">
-		<a asp-controller="Resenjes" asp-action="Create" class="btn btn-success">Dodaj novo resenje</a>
+		<a asp-controller="Resenjes" asp-action="Create" asp-route-zadatakId="@Model.ZadatakId" class="btn btn-success">Dodaj novo resenje</a>
 	</div>
 }
 
@@ -28,7 +28,6 @@
 	<thead>
 		<tr>
 			<th>Opis</th>
-			<th> </th>
 			<th>Opcije</th>
 		</tr>
 	</thead>
@@ -37,7 +36,6 @@
 		{
 			<tr>
 				<td>@resenje.Opis</td>
-				<td> </td>
 				<td>
 					@if(resenje.Greske.Count > 0)
 					{
@@ -45,8 +43,8 @@
 					} else {
 						@if ((korisnik != null && (korisnik.UlogaId == 1 || korisnik.UlogaId == 2)) || User.IsInRole("Admin"))
 						{
-							<a class="btn btn-primary" asp-controller="Resenjas" asp-action="Edit" asp-route-id="@resenje.ResenjeId">Izmeni</a>
-							<a class="btn btn-danger" asp-controller="Resenjas" asp-action="Delete" asp-route-id="@resenje.ResenjeId">Obrisi</a>
+							<a class="btn btn-primary" asp-controller="Resenjes" asp-action="Edit" asp-route-id="@resenje.ResenjeId">Izmeni</a>
+							<a class="btn btn-danger" asp-controller="Resenjes" asp-action="Delete" asp-route-id="@resenje.ResenjeId">Obrisi</a>
 						} 
 						@if (User.IsInRole("Admin") || (korisnik != null && (korisnik.UlogaId == 3)))
 						{

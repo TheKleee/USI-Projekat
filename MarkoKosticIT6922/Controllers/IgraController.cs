@@ -85,30 +85,30 @@ namespace MarkoKosticIT6922.Controllers
             return View(greska);
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Greska(Greska greska)
-        {
-            if (!ModelState.IsValid)
+            [HttpPost]
+            [ValidateAntiForgeryToken]
+            public async Task<IActionResult> Greska(Greska greska)
             {
-                greska.Resenje = await _context.Resenja.FindAsync(greska.ResenjeId);
-                return View("Greska", greska);
+                if (!ModelState.IsValid)
+                {
+                    greska.Resenje = await _context.Resenja.FindAsync(greska.ResenjeId);
+                    return View("Greska", greska);
+                }
+
+                var korisnikId = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
+
+                if (korisnikId == null)
+                {
+                    return Unauthorized();
+                }
+
+                greska.KorisnikId = korisnikId;
+
+
+                _context.Greske.Add(greska);
+                await _context.SaveChangesAsync();
+
+                return RedirectToAction("Resenja", new { id = greska.Resenje?.ZadatakId });
             }
-
-            var korisnikId = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
-
-            if (korisnikId == null)
-            {
-                return Unauthorized();
-            }
-
-            greska.KorisnikId = korisnikId;
-
-
-            _context.Greske.Add(greska);
-            await _context.SaveChangesAsync();
-
-            return RedirectToAction("Resenja", new { id = greska.Resenje?.ZadatakId });
-        }
     }
 }

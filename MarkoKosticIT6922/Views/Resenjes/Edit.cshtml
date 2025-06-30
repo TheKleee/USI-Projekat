@@ -11,6 +11,8 @@
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Edit">
+            <input type="hidden" name="returnUrl" value="@ViewBag.ReturnUrl" />
+
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="ResenjeId" />
             <div class="form-group">
@@ -18,21 +20,29 @@
                 <input asp-for="Opis" class="form-control" />
                 <span asp-validation-for="Opis" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="ZadatakId" class="control-label"></label>
-                <select asp-for="ZadatakId" class="form-control" asp-items="ViewBag.ZadatakId"></select>
-                <span asp-validation-for="ZadatakId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="KorisnikId" class="control-label"></label>
-                <select asp-for="KorisnikId" class="form-control" asp-items="ViewBag.KorisnikId"></select>
-                <span asp-validation-for="KorisnikId" class="text-danger"></span>
-            </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="Odobreno" /> @Html.DisplayNameFor(model => model.Odobreno)
-                </label>
-            </div>
+
+            @if (User.IsInRole("Admin"))
+            {
+                <div class="form-group">
+                    <label asp-for="ZadatakId" class="control-label"></label>
+                    <select asp-for="ZadatakId" class="form-control" asp-items="ViewBag.ZadatakId"></select>
+                    <span asp-validation-for="ZadatakId" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="KorisnikId" class="control-label"></label>
+                    <select asp-for="KorisnikId" class="form-control" asp-items="ViewBag.KorisnikId"></select>
+                    <span asp-validation-for="KorisnikId" class="text-danger"></span>
+                </div>
+                <div class="form-group form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" asp-for="Odobreno" /> @Html.DisplayNameFor(model => model.Odobreno)
+                    </label>
+                </div>
+            } else {
+                <input type="hidden" asp-for="ZadatakId" />
+                <input type="hidden" asp-for="KorisnikId" />
+                <input type="hidden" asp-for="Odobreno" value="false"/>
+            }
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
@@ -41,7 +51,12 @@
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    @if (ViewBag.ReturnUrl != null)
+    {
+        <a href="@ViewBag.ReturnUrl">Back to list</a>
+    } else {
+        <a asp-action="Index">Back to list</a>
+    }
 </div>
 
 @section Scripts {

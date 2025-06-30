@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace MarkoKosticIT6922.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class UlogasController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -21,7 +22,6 @@ namespace MarkoKosticIT6922.Controllers
         }
 
         // GET: Ulogas
-        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Index()
         {
             return View(await _context.Uloge.ToListAsync());

@@ -8,16 +8,19 @@ using Microsoft.EntityFrameworkCore;
 using MarkoKosticIT6922.Data;
 using MarkoKosticIT6922.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 
 namespace MarkoKosticIT6922.Controllers
 {
     public class ResenjesController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly UserManager<Korisnik> _userManager;
 
-        public ResenjesController(ApplicationDbContext context)
+        public ResenjesController(ApplicationDbContext context, UserManager<Korisnik> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         // GET: Resenjes
@@ -29,6 +32,7 @@ namespace MarkoKosticIT6922.Controllers
         }
 
         // GET: Resenjes/Details/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -49,10 +53,22 @@ namespace MarkoKosticIT6922.Controllers
         }
 
         // GET: Resenjes/Create
-        public IActionResult Create()
+        public IActionResult Create(int? zadatakId)
         {
-            ViewData["KorisnikId"] = new SelectList(_context.Users, "Id", "Id");
-            ViewData["ZadatakId"] = new SelectList(_context.Zadaci, "ZadatakId", "ZadatakId");
+            if (User.IsInRole("Admin"))
+            {
+                ViewData["KorisnikId"] = new SelectList(_context.Users, "Id", "Id");
+                ViewData["ZadatakId"] = new SelectList(_context.Zadaci, "ZadatakId", "ZadatakId");
+            } else {
+                ViewBag.ZadatakId = zadatakId;
+                var korisnikId = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
+                ViewBag.KorisnikId = korisnikId;
+            }
+
+            var referer = Request.Headers["Referer"].ToString();
+            if (!string.IsNullOrEmpty(referer))
+                ViewBag.ReturnUrl = referer;
+            
             return View();
         }
 
@@ -61,16 +77,27 @@ namespace MarkoKosticIT6922.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ResenjeId,Opis,ZadatakId,KorisnikId,Odobreno")] Resenje resenje)
+        public async Task<IActionResult> Create([Bind("ResenjeId,Opis,ZadatakId,KorisnikId,Odobreno")] Resenje resenje, string? returnUrl)
         {
+            var korisnik = await _userManager.GetUserAsync(User);
+
+            if (!User.IsInRole("Admin") && korisnik != null)
+                resenje.KorisnikId = korisnik.Id;
+
             if (ModelState.IsValid)
             {
                 _context.Add(resenje);
                 await _context.SaveChangesAsync();
+
+                if (!string.IsNullOrEmpty(returnUrl))
+                    return Redirect(returnUrl);
+
                 return RedirectToAction(nameof(Index));
             }
+
             ViewData["KorisnikId"] = new SelectList(_context.Users, "Id", "Id", resenje.KorisnikId);
             ViewData["ZadatakId"] = new SelectList(_context.Zadaci, "ZadatakId", "ZadatakId", resenje.ZadatakId);
+
             return View(resenje);
         }
 
@@ -87,8 +114,14 @@ namespace MarkoKosticIT6922.Controllers
             {
                 return NotFound();
             }
+
             ViewData["KorisnikId"] = new SelectList(_context.Users, "Id", "Id", resenje.KorisnikId);
             ViewData["ZadatakId"] = new SelectList(_context.Zadaci, "ZadatakId", "ZadatakId", resenje.ZadatakId);
+            
+            var referer = Request.Headers["Referer"].ToString();
+            if (!string.IsNullOrEmpty(referer))
+                ViewBag.ReturnUrl = referer;
+
             return View(resenje);
         }
 
@@ -97,7 +130,7 @@ namespace MarkoKosticIT6922.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ResenjeId,Opis,ZadatakId,KorisnikId,Odobreno")] Resenje resenje)
+        public async Task<IActionResult> Edit(int id, [Bind("ResenjeId,Opis,ZadatakId,KorisnikId,Odobreno")] Resenje resenje, string? returnUrl)
         {
             if (id != resenje.ResenjeId)
             {
@@ -122,10 +155,16 @@ namespace MarkoKosticIT6922.Controllers
                         throw;
                     }
                 }
+
+                if (!string.IsNullOrEmpty(returnUrl))
+                    return Redirect(returnUrl);
+
                 return RedirectToAction(nameof(Index));
             }
+
             ViewData["KorisnikId"] = new SelectList(_context.Users, "Id", "Id", resenje.KorisnikId);
             ViewData["ZadatakId"] = new SelectList(_context.Zadaci, "ZadatakId", "ZadatakId", resenje.ZadatakId);
+
             return View(resenje);
         }
 
@@ -141,10 +180,15 @@ namespace MarkoKosticIT6922.Controllers
                 .Include(r => r.Korisnik)
                 .Include(r => r.Zadatak)
                 .FirstOrDefaultAsync(m => m.ResenjeId == id);
+
             if (resenje == null)
             {
                 return NotFound();
             }
+
+            var referer = Request.Headers["Referer"].ToString();
+            if (!string.IsNullOrEmpty(referer))
+                ViewBag.ReturnUrl = referer;
 
             return View(resenje);
         }
@@ -152,7 +196,7 @@ namespace MarkoKosticIT6922.Controllers
         // POST: Resenjes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(int id, string? returnUrl)
         {
             var resenje = await _context.Resenja.FindAsync(id);
             if (resenje != null)
@@ -161,6 +205,11 @@ namespace MarkoKosticIT6922.Controllers
             }
 
             await _context.SaveChangesAsync();
+
+            if (!string.IsNullOrEmpty(returnUrl))
+                return Redirect(returnUrl);
+            
+
             return RedirectToAction(nameof(Index));
         }
 

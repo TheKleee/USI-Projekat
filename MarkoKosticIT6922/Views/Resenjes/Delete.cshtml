@@ -17,29 +17,41 @@
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Opis)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Zadatak)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Zadatak.ZadatakId)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Korisnik)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Korisnik.Id)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Odobreno)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Odobreno)
-        </dd>
+        @if (User.IsInRole("Admin"))
+        {
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.Zadatak)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.Zadatak.ZadatakId)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.Korisnik)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.Korisnik.Id)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.Odobreno)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.Odobreno)
+            </dd>
+        }
     </dl>
     
     <form asp-action="Delete">
         <input type="hidden" asp-for="ResenjeId" />
+
+        <input type="hidden" name="returnUrl" value="@ViewBag.ReturnUrl" />
+        
+
         <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-action="Index">Back to List</a>
+        @if (ViewBag.ReturnUrl != null)
+        {
+            <a href="@ViewBag.ReturnUrl" class="btn btn-secondary">Back to list</a>
+        } else {
+            <a asp-action="Index" class="btn btn-secondary">Back to list</a>
+        }
     </form>
 </div>

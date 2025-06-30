@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace MarkoKosticIT6922.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class GreskasController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -21,7 +22,6 @@ namespace MarkoKosticIT6922.Controllers
         }
 
         // GET: Greskas
-        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Index()
         {
             var applicationDbContext = _context.Greske.Include(g => g.Korisnik).Include(g => g.Resenje);
