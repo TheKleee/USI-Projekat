@@ -29,7 +29,19 @@
 		<tr>
 			<th>Opis</th>
 			<th>Greske</th>
-			<th>Opcije</th>
+			@{
+
+				string spacing = "";
+				@if (User.IsInRole("Admin"))
+				{
+					spacing = "200px";
+				}
+				else
+				{
+					spacing = "100px";
+				}
+				<th class="text-end" style="padding-right: @spacing;">Opcije</th>
+			}
 		</tr>
 	</thead>
 	<tbody>
@@ -48,7 +60,7 @@
 						}
 					}
 				</td>
-				<td>
+				<td class="text-end">
 					@if ((korisnik != null && (korisnik.UlogaId == 1 || korisnik.UlogaId == 2)) || User.IsInRole("Admin"))
 					{
 						<a class="btn btn-primary" asp-controller="Resenjes" asp-action="Edit" asp-route-id="@resenje.ResenjeId">Izmeni</a>

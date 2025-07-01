@@ -17,24 +17,36 @@
 		<tr>
 			<th>Naziv</th>
 			<th>Opis</th>
-			<th>Opcije</th>
+			@{
+
+				string spacing = "";
+				@if (User.IsInRole("Admin"))
+				{
+					spacing = "200px";
+				}
+				else
+				{
+					spacing = "100px";
+				}
+				<th class="text-end" style="padding-right: @spacing;">Opcije</th>
+			}
 		</tr>
 	</thead>
 	<tbody>
 		@foreach (var igra in Model)
 		{
-				<tr>
-					<td>@igra.Naziv</td>
-					<td>@igra.Opis</td>
-					<td>
-					@if (User.IsInRole("Admin"))
-					{
-						<a class="btn btn-primary" asp-controller="Igras" asp-action="Edit" asp-route-id="@igra.IgraId">Izmeni</a>
-						<a class="btn btn-danger" asp-controller="Igras" asp-action="Delete" asp-route-id="@igra.IgraId">Obrisi</a>
-					} 
-						<a class="btn btn-success" asp-action="Zadaci" asp-route-id="@igra.IgraId">Detalji</a>
-					</td>
-				</tr>
+			<tr>
+				<td>@igra.Naziv</td>
+				<td>@igra.Opis</td>
+				<td class="text-end">
+				@if (User.IsInRole("Admin"))
+				{
+					<a class="btn btn-primary" asp-controller="Igras" asp-action="Edit" asp-route-id="@igra.IgraId">Izmeni</a>
+					<a class="btn btn-danger" asp-controller="Igras" asp-action="Delete" asp-route-id="@igra.IgraId">Obrisi</a>
+				} 
+					<a class="btn btn-success" asp-action="Zadaci" asp-route-id="@igra.IgraId">Detalji</a>
+				</td>
+			</tr>
 		}
 	</tbody>
 </table>

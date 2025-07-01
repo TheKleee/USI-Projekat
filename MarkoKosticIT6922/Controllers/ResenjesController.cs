@@ -84,6 +84,13 @@ namespace MarkoKosticIT6922.Controllers
             if (!User.IsInRole("Admin") && korisnik != null)
                 resenje.KorisnikId = korisnik.Id;
 
+            var zadatak = await _context.Zadaci.FirstOrDefaultAsync(z => z.ZadatakId == resenje.ZadatakId);
+
+            if (zadatak == null)
+                ModelState.AddModelError(string.Empty, "Zadatak nije pronadjen.");
+            else if (korisnik != null && korisnik.UlogaId != zadatak.UlogaId && !User.IsInRole("Admin"))
+                ModelState.AddModelError(string.Empty, "Nemate dozvolu da dodate resenje za ovaj zadatak.");
+
             if (ModelState.IsValid)
             {
                 _context.Add(resenje);
@@ -136,6 +143,17 @@ namespace MarkoKosticIT6922.Controllers
             {
                 return NotFound();
             }
+
+            var korisnik = await _userManager.GetUserAsync(User);
+            if (korisnik == null)
+                ModelState.AddModelError(string.Empty, "Korisnik nije pronadjen.");
+
+            var zadatak = await _context.Zadaci.FirstOrDefaultAsync(z => z.ZadatakId == resenje.ZadatakId);
+
+            if (zadatak == null)
+                ModelState.AddModelError(string.Empty, "Zadatak nije pronađen.");
+            else if (korisnik != null && korisnik.UlogaId != zadatak.UlogaId && !User.IsInRole("Admin"))
+                ModelState.AddModelError(string.Empty, "Nemate dozvolu da izmenite resenje za ovaj zadatak.");
 
             if (ModelState.IsValid)
             {
@@ -203,6 +221,17 @@ namespace MarkoKosticIT6922.Controllers
             {
                 _context.Resenja.Remove(resenje);
             }
+
+            var korisnik = await _userManager.GetUserAsync(User);
+            if (korisnik == null)
+                ModelState.AddModelError(string.Empty, "Korisnik nije pronadjen.");
+
+            var zadatak = await _context.Zadaci.FirstOrDefaultAsync(z => z.ZadatakId == resenje.ZadatakId);
+
+            if (zadatak == null)
+                ModelState.AddModelError(string.Empty, "Zadatak nije pronađen.");
+            else if (korisnik != null && korisnik.UlogaId != zadatak.UlogaId && !User.IsInRole("Admin"))
+                ModelState.AddModelError(string.Empty, "Nemate dozvolu da brisete resenje za ovaj zadatak.");
 
             await _context.SaveChangesAsync();
 
